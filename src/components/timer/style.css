@@ -1,0 +1,26 @@
+.buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 15px;
+}
+button{
+    background: rgb(27, 4, 116);
+    color: #fff;
+    border: 1px solid #000;
+    margin: 3px;
+    font-size: 16px;
+    line-height: 26px;
+}
+.seconds{
+    width: 100%;
+    text-align: center;
+}
+.row{
+    width: 100%;
+    height: 25px;
+    transition: .5s;
+        background: #000;
+
+}

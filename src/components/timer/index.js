@@ -4,16 +4,15 @@ import "./style.css";
 class Timer extends Component {
     state = {
         count: Math.round(this.props.time / 60),
-        start: false,
+        autostart: true,
         width: 100,
         change: (100 / Math.round(this.props.time / 60)).toFixed(4)
     }
 
     componentDidMount() {
         setInterval(() => {
-            if (this.state.start) {
+            if (this.state.autostart) {
                 if (this.state.count !== 0) {
-                    this.props.onTick(this.state);
                     this.startTime();
                     this.changeCount();
                     this.changeWidth();
@@ -26,14 +25,14 @@ class Timer extends Component {
 
     startTime = () => {
         this.setState({
-            start: true
+            autostart: true
         });
     }
 
     reset = () => {
         this.setState({
             count: Math.round(this.props.time / 60),
-            start: false,
+            autostart: false,
             width: 100,
             change: (100 / Math.round(this.props.time / 60)).toFixed(4)
         });
@@ -41,7 +40,7 @@ class Timer extends Component {
 
     pauseTime = () => {
         this.setState({
-            start: false,
+            autostart: false,
             count: this.state.count
         });
     }
@@ -63,8 +62,8 @@ class Timer extends Component {
         return (
             <div className="timer">
                 <div className="buttons">
-                    <button onClick={this.pauseTime}>pause</button>
                     <button onClick={this.reset}>reset</button>
+                    <button onClick={this.pauseTime}>pause</button>
                     <button onClick={this.startTime}>start</button>
                     <div className="seconds">{this.state.count} seconds</div> 
 
